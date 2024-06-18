@@ -17,6 +17,16 @@ class TicTacToeGame {
     ];
   }
 
+  void restart(){
+    turn = Marking.X;
+    moves= 0;
+    winner = null;
+    state = GameState.playing;
+    for (int i = 0; i < board.length; i++) {
+      board[i] = Marking.U;
+    }
+  }
+
   void changeTurns() {
     turn = turn == Marking.X ? Marking.O : Marking.X;
     ++moves;
@@ -49,7 +59,7 @@ void setWinner() {
   }
 
    Marking? _checkDiag2() {
-    if (board[0] != Marking.U && board[2] == board[4] && board[2] == board[6]) {
+    if (board[2] != Marking.U && board[2] == board[4] && board[2] == board[6]) {
       return board[0];
     } else {
       return null;
